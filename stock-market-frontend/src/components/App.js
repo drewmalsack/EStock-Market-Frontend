@@ -6,7 +6,7 @@ import AddStock from "./AddStock";
 import RegisterCompany from "./RegisterCompany";
 import ListAllCompanies from "./ListAllCompanies";
 import StockPrices from "./StockPrices";
-import CompanyDetails from "./companyDetails";
+import SearchCompanyDetails from "./searchCompanyDetails";
 import Navbar from "./Navbar";
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
         <Route path="/addStockPrice" element={<AddStock />} />
         <Route path="/registerCompany" element={<RegisterCompany />} />
         <Route path="/listAllCompanies" element={<ListAllCompanies />} />
-        <Route path="/companyDetails" element={<CompanyDetails />} />
+        <Route path="/companyDetails" element={<SearchCompanyDetails />} />
       </Routes>
     </Router>
     

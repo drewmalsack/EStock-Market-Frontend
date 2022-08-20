@@ -13,3 +13,9 @@ export const getCompanyByCode = (code) => {
       (res) => res.json()
     );
   };
+
+export const getAllCompanies = () => {
+    return fetch(
+        `http://localhost:8090/api/v1.0/market/company/getall`
+      ).then((res) => res.json());
+}

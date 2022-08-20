@@ -10,7 +10,7 @@ import { getCompanyByCode } from '../api/companyAPI';
 import { getAllStocksbyTime, getLatestStockPrice } from '../api/stockAPI';
 import StockPrices from './StockPrices';
 
-function CompanyDetails() {
+function SearchCompanyDetails() {
 
     const location = useLocation();
     const [company, setCompany] = useState();
@@ -39,7 +39,6 @@ function CompanyDetails() {
 
   return (
     <Container fluid className="mt-5">
-        {console.log(company)}
         <Row className="mb-2">
             <Col xs={2}></Col>
             <Col xs={3}><Form.Control type="text" className="text-center" placeholder="Company Code" disabled /></Col>
@@ -88,8 +87,8 @@ function CompanyDetails() {
         <Row className="mt-3 mb-5">
             <Col xs={2}></Col>
             <Col xs={3}><Form.Label>Search From</Form.Label></Col>
-            <Col xs={4} className="d-flex align-items-end"><Form.Control type="datetime-local" className="text-center me-3" onChange={(event) => {setStartDate(event.target.value);}} /><Form.Label>To</Form.Label><Form.Control type="datetime-local" className="text-center ms-3" onChange={(event) => {setEndDate(event.target.value);}} /></Col>
-            <Col xs={1}><Button onClick={() => getStocks()}>Search</Button></Col>
+            <Col xs={4} className="d-flex align-items-end"><Form.Control type="datetime-local" className="text-center me-3" onChange={(event) => {setStartDate(event.target.value);} } disabled={company ? company.status ? true : false : true} /><Form.Label>To</Form.Label><Form.Control type="datetime-local" className="text-center ms-3" onChange={(event) => {setEndDate(event.target.value);}} disabled={company ? company.status ? true : false : true} /></Col>
+            <Col xs={1}><Button onClick={() => getStocks()} disabled={company ? company.status ? true : false : true}>Search</Button></Col>
         </Row>
         
         {
@@ -99,11 +98,11 @@ function CompanyDetails() {
                 <StockPrices stocks={stocks} />
             )
             :
-            <div></div>
+            <h3 className="text-center">No stocks found in this time range</h3>
         }
 
     </Container>
   )
 }
 
-export default CompanyDetails
+export default SearchCompanyDetails
