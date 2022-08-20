@@ -16,7 +16,7 @@ function Navbar() {
 
   const handleSubmit = () => {
     navigate(
-      "/showStockPrices",
+      "/companyDetails",
       {state: {
         search: searchTerm
       }}
